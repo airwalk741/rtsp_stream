@@ -1,6 +1,7 @@
 {
   "name": "Streamedian-RTSP-player-example",
   "version": "0.1.0",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "react": "^16.8.3",
