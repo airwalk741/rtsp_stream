@@ -1,7 +1,7 @@
 import React from "react";
 import ViewInfo from "./ViewInfo";
 import InputSource from "./InputSource";
-import InputBufferDuration from "./InputBufferDuration"
+import InputBufferDuration from "./InputBufferDuration";
 import VideoRateControl from "./VideoRateControl";
 
 export default class StreamedianPlayer extends React.Component {
@@ -9,7 +9,7 @@ export default class StreamedianPlayer extends React.Component {
     super(props);
     this.state = {
       bufferDuration: 30,
-      socket: "ws://localhost:8080/ws/",            
+      socket: "wss://" + window.location.host + "/ws",
       redirectNativeMediaErrors: true,
       errorHandler: this.errHandler.bind(this),
       infoHandler: this.infHandler.bind(this),
@@ -38,13 +38,13 @@ export default class StreamedianPlayer extends React.Component {
   }
 
   changeSource(src) {
-    this.setState({source: src}, () => {
+    this.setState({ source: src }, () => {
       this.restart();
     });
   }
 
   changeBufferDuration(duration) {
-    this.setState({bufferDuration: duration});
+    this.setState({ bufferDuration: duration });
   }
 
   errHandler(err) {
@@ -52,7 +52,7 @@ export default class StreamedianPlayer extends React.Component {
   }
 
   infHandler(inf) {
-    this.setState({info: inf});
+    this.setState({ info: inf });
   }
 
   render() {
@@ -60,7 +60,10 @@ export default class StreamedianPlayer extends React.Component {
       <div>
         <ViewInfo info={this.state.info || []} onClick={this.changeSource} />
         <InputSource onClick={this.changeSource} />
-        <InputBufferDuration duration={this.state.bufferDuration} onChange={this.changeBufferDuration}/>
+        <InputBufferDuration
+          duration={this.state.bufferDuration}
+          onChange={this.changeBufferDuration}
+        />
         <video id={this.props.id} controls autoPlay>
           {this.props.children}
         </video>

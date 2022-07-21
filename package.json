@@ -4,6 +4,7 @@
   "homepage": ".",
   "private": true,
   "dependencies": {
+    "http-proxy-middleware": "^2.0.6",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-scripts": "2.1.5"
