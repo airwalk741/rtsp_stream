@@ -9,7 +9,7 @@ export default class StreamedianPlayer extends React.Component {
     super(props);
     this.state = {
       bufferDuration: 30,
-      socket: "ws://" + window.location.host + "/ws",
+      socket: "wss://" + window.location.host + "/ws",
       redirectNativeMediaErrors: true,
       errorHandler: this.errHandler.bind(this),
       infoHandler: this.infHandler.bind(this),
